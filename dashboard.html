@@ -9,43 +9,26 @@
 
 <script>
 
-function loadDashboard(jenis) {
+function loadDashboard(jenis){
 
-    // Dashboard TUBEL Gabungan
-    if (jenis === "gabungan") {
-        document.getElementById("dashboardGabungan").style.display = "block";
-        document.getElementById("dashboardMandiri").style.display = "none";
-        document.getElementById("dashboardDibiayai").style.display = "none";
-        document.getElementById("dashboardKetenagaan").style.display = "none";
-    }
+const frame = document.getElementById("dashboardFrame");
 
-    // Dashboard TUBEL Mandiri saja
-    if (jenis === "mandiri") {
-        document.getElementById("dashboardGabungan").style.display = "none";
-        document.getElementById("dashboardMandiri").style.display = "block";
-        document.getElementById("dashboardDibiayai").style.display = "none";
-        document.getElementById("dashboardKetenagaan").style.display = "none";
-    }
+if(jenis === "mandiri"){
+frame.src="https://app.powerbi.com/view?r=eyJrIjoiM2U2YTU3MmItZGVlZi00MGM1LTkzMTEtMTBiMzg0OGVhOWQwIiwidCI6IjI5ZTVlYTIwLWRhYWEtNDI5MS1hMmFlLTg3NGU2M2MxZjI5MiIsImMiOjEwfQ%3D%3D&pageName=22076eac94967b603209";
+}
 
-    // Dashboard TUBEL Dibiayai saja
-    if (jenis === "dibiayai") {
-        document.getElementById("dashboardGabungan").style.display = "none";
-        document.getElementById("dashboardMandiri").style.display = "none";
-        document.getElementById("dashboardDibiayai").style.display = "block";
-        document.getElementById("dashboardKetenagaan").style.display = "none";
-    }
+if(jenis === "dibiayai"){
+frame.src="https://app.powerbi.com/view?r=eyJrIjoiM2U2YTU3MmItZGVlZi00MGM1LTkzMTEtMTBiMzg0OGVhOWQwIiwidCI6IjI5ZTVlYTIwLWRhYWEtNDI5MS1hMmFlLTg3NGU2M2MxZjI5MiIsImMiOjEwfQ%3D%3D&pageName=126f929e10418231ad32";
+}
 
-    // Dashboard Ketenagaan saja
-    if (jenis === "ketenagaan") {
-        document.getElementById("dashboardGabungan").style.display = "none";
-        document.getElementById("dashboardMandiri").style.display = "none";
-        document.getElementById("dashboardDibiayai").style.display = "none";
-        document.getElementById("dashboardKetenagaan").style.display = "block";
-    }
+if(jenis === "ketenagaan"){
+frame.src="https://app.powerbi.com/view?r=eyJrIjoiM2U2YTU3MmItZGVlZi00MGM1LTkzMTEtMTBiMzg0OGVhOWQwIiwidCI6IjI5ZTVlYTIwLWRhYWEtNDI5MS1hMmFlLTg3NGU2M2MxZjI5MiIsImMiOjEwfQ%3D%3D&pageName=89be73248fff7fbd674e";
+}
 
 }
 
 </script>
+
   
 <body>
 
@@ -80,29 +63,9 @@ function loadDashboard(jenis) {
       <a href="#">Dashboard ▾</a>
 
       <ul class="dropdown-menu">
-<li>
-    <a href="#" onclick="loadDashboard('gabungan')">
-        Dashboard TUBEL
-    </a>
-</li>
-
-<li>
-    <a href="#" onclick="loadDashboard('mandiri')">
-        TUBEL Mandiri
-    </a>
-</li>
-
-<li>
-    <a href="#" onclick="loadDashboard('dibiayai')">
-        TUBEL Dibiayai
-    </a>
-</li>
-
-<li>
-    <a href="#" onclick="loadDashboard('ketenagaan')">
-        Ketenagaan
-    </a>
-</li>
+       <li><a href="#" onclick="loadDashboard('mandiri')">Dashboard Tubel Mandiri</a></li>
+       <li><a href="#" onclick="loadDashboard('dibiayai')">Dashboard Tubel Dibiayai</a></li>
+       <li><a href="#" onclick="loadDashboard('ketenagaan')">Dashboard Ketenagaan</a></li>
       </ul>
     </li>
 
