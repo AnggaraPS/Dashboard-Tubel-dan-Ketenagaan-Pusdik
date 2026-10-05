@@ -1,117 +1,499 @@
+```html
 <!DOCTYPE html>
 <html lang="id">
+
 <head>
+
   <meta charset="UTF-8">
+
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Dashboard PKA dan Ketenagaan Pusdik KP</title>
+
+  <title>Portal PKA dan Ketenagaan Pusdik KP</title>
+
   <link rel="stylesheet" href="style.css">
+
 </head>
 
-<script>
 
-function loadDashboard(jenis){
-
-const frame = document.getElementById("dashboardFrame");
-
-if(jenis === "Data Pendidik dan Tenaga Kependidikan"){
-frame.src="https://app.powerbi.com/reportEmbed?reportId=eeb8a1bf-3e9a-4d30-879c-0ca60a112dcb&autoAuth=true&ctid=bbf1f00a-8ea9-4f0f-a351-780708384dda";
-}
-
-if(jenis === "Data Tugas Belajar Dibiayai"){
-frame.src="https://app.powerbi.com/view?r=eyJrIjoiM2U2YTU3MmItZGVlZi00MGM1LTkzMTEtMTBiMzg0OGVhOWQwIiwidCI6IjI5ZTVlYTIwLWRhYWEtNDI5MS1hMmFlLTg3NGU2M2MxZjI5MiIsImMiOjEwfQ%3D%3D&pageName=126f929e10418231ad32";
-}
-
-if(jenis === "Data Tugas Belajar Mandiri"){
-frame.src="https://app.powerbi.com/view?r=eyJrIjoiM2U2YTU3MmItZGVlZi00MGM1LTkzMTEtMTBiMzg0OGVhOWQwIiwidCI6IjI5ZTVlYTIwLWRhYWEtNDI5MS1hMmFlLTg3NGU2M2MxZjI5MiIsImMiOjEwfQ%3D%3D&pageName=89be73248fff7fbd674e";
-}
-
-}
-
-</script>
 <body>
 
+
+<!-- =====================================================
+     CEK LOGIN
+===================================================== -->
+
 <script>
+
   if (localStorage.getItem("isLogin") !== "true") {
+
     window.location.href = "login.html";
+
   }
+
 </script>
 
-<!-- AREA SENSOR KIRI -->
+
+
+<!-- =====================================================
+     SENSOR SIDEBAR
+===================================================== -->
+
 <div class="sidebar-trigger"></div>
+
+
 
 <div class="layout">
 
-  <!-- SIDEBAR -->
+
+  <!-- ===================================================
+       SIDEBAR
+  ==================================================== -->
+
   <aside class="sidebar" id="sidebar">
+
+
+    <!-- HEADER SIDEBAR -->
+
     <div class="sidebar-header">
-      <button id="toggleBtn" style="background:none;border:none;color:white;font-size:22px;cursor:pointer;margin-right:10px;">☰</button>
-      <img src="https://1.bp.blogspot.com/-x_XKQe2fBLo/YUSrZCN3xmI/AAAAAAAAG0U/f5yxOVigV6EcV7GLIR3QdBkbToqC8MbKgCLcBGAsYHQ/s1600/logo%2Bbaru%2Bkementrian%2Bkelautan%2Bdan%2Bperikanan%2BPNG%2B-%2Bkanalmu%2B.png" alt="Logo KKP">
-      <span>Portal Pegawai KKP</span>
+
+
+      <button
+        id="toggleBtn"
+        class="toggle-button"
+        title="Buka/Tutup Menu"
+      >
+        ☰
+      </button>
+
+
+      <img
+        src="https://1.bp.blogspot.com/-x_XKQe2fBLo/YUSrZCN3xmI/AAAAAAAAG0U/f5yxOVigV6EcV7GLIR3QdBkbToqC8MbKgCLcBGAsYHQ/s1600/logo%2Bbaru%2Bkementrian%2Bkelautan%2Bdan%2Bperikanan%2BPNG%2B-%2Bkanalmu%2B.png"
+        alt="Logo KKP"
+      >
+
+
+      <div class="sidebar-title">
+
+        <strong>
+          Portal Pegawai KKP
+        </strong>
+
+        <small>
+          Kementerian Kelautan dan Perikanan
+        </small>
+
+      </div>
+
+
     </div>
+
+
+
+    <!-- =================================================
+         MENU UTAMA
+    ================================================== -->
 
     <nav class="sidebar-menu">
 
-  <ul>
 
-    <li>
-      <a href="index.html">Beranda</a>
-    </li>
+      <div class="menu-label">
+        PILIH DATA
+      </div>
 
-    <li class="dropdown">
-      <a href="#">Dashboard ▾</a>
 
-      <ul class="dropdown-menu">
-       <li><a href="#" onclick="loadDashboard('Data Pendidik dan Tenaga Kependidikan')">Data Pendidik dan Tenaga Kependidikan</a></li>
-       <li><a href="#" onclick="loadDashboard('Data Tugas Belajar Dibiayai')">Data Tugas Belajar Dibiayai</a></li>
-       <li><a href="#" onclick="loadDashboard('Data Tugas Belajar Mandiri')">Data Tugas Belajar Mandiri</a></li>
-      </ul>
-    </li>
 
-  </ul>
+      <!-- ===============================================
+           MENU 1
+      ================================================ -->
 
-</nav>
+      <a
+        href="#"
+        class="menu-item active"
+        onclick="showDashboard('Data Pendidik dan Tenaga Kependidikan', this); return false;"
+      >
+
+        <span class="menu-icon">
+          👥
+        </span>
+
+        <span class="menu-text">
+
+          Data Pendidik dan
+          Tenaga Kependidikan
+
+        </span>
+
+      </a>
+
+
+
+      <!-- ===============================================
+           MENU 2
+      ================================================ -->
+
+      <a
+        href="#"
+        class="menu-item"
+        onclick="showDashboard('Data Tugas Belajar Dibiayai', this); return false;"
+      >
+
+        <span class="menu-icon">
+          🎓
+        </span>
+
+        <span class="menu-text">
+
+          Data Tugas Belajar
+          Dibiayai
+
+        </span>
+
+      </a>
+
+
+
+      <!-- ===============================================
+           MENU 3
+      ================================================ -->
+
+      <a
+        href="#"
+        class="menu-item"
+        onclick="showDashboard('Data Tugas Belajar Mandiri', this); return false;"
+      >
+
+        <span class="menu-icon">
+          📚
+        </span>
+
+        <span class="menu-text">
+
+          Data Tugas Belajar
+          Mandiri
+
+        </span>
+
+      </a>
+
+
+    </nav>
+
+
+
+    <!-- =================================================
+         FOOTER SIDEBAR
+    ================================================== -->
+
+    <div class="sidebar-footer">
+
+      <span>
+        Portal Pusdik KP
+      </span>
+
+    </div>
+
+
   </aside>
 
-  <!-- KONTEN -->
+
+
+  <!-- ===================================================
+       KONTEN UTAMA
+  ==================================================== -->
+
   <main class="content">
-    <iframe
-       id="dashboardFrame"
-       class="dashboard-frame"
-       src="https://app.powerbi.com/view?r=eyJrIjoiM2U2YTU3MmItZGVlZi00MGM1LTkzMTEtMTBiMzg0OGVhOWQwIiwidCI6IjI5ZTVlYTIwLWRhYWEtNDI5MS1hMmFlLTg3NGU2M2MxZjI5MiIsImMiOjEwfQ%3D%3D"
-       allowfullscreen>
-    </iframe>
+
+
+    <!-- =================================================
+         HEADER KONTEN
+    ================================================== -->
+
+    <header class="content-header">
+
+
+      <div>
+
+        <span class="content-label">
+          PORTAL PUSDIK KP
+        </span>
+
+
+        <h1 id="dashboardTitle">
+          Data Pendidik dan Tenaga Kependidikan
+        </h1>
+
+      </div>
+
+
+      <div class="content-status">
+
+        <span class="status-dot"></span>
+
+        Sistem Aktif
+
+      </div>
+
+
+    </header>
+
+
+
+    <!-- =================================================
+         POWER BI
+    ================================================== -->
+
+    <section class="dashboard-area">
+
+
+      <iframe
+        id="dashboardFrame"
+        class="dashboard-frame"
+        src=""
+        allowfullscreen>
+      </iframe>
+
+
+    </section>
+
+
   </main>
+
 
 </div>
 
-<!-- SCRIPT AUTO HIDE -->
+
+
+<!-- =====================================================
+     JAVASCRIPT
+===================================================== -->
+
 <script>
-const sidebar = document.getElementById("sidebar");
-const toggleBtn = document.getElementById("toggleBtn");
-const trigger = document.querySelector(".sidebar-trigger");
+
+
+/* =====================================================
+   URL POWER BI
+===================================================== */
+
+const dashboardURLs = {
+
+
+  /* -----------------------------------------------------
+     DATA PENDIDIK DAN TENAGA KEPENDIDIKAN
+  ----------------------------------------------------- */
+
+  "Data Pendidik dan Tenaga Kependidikan":
+
+    "https://app.powerbi.com/reportEmbed?reportId=eeb8a1bf-3e9a-4d30-879c-0ca60a112dcb&autoAuth=true&ctid=bbf1f00a-8ea9-4f0f-a351-780708384dda",
+
+
+
+  /* -----------------------------------------------------
+     DATA TUGAS BELAJAR DIBIAYAI
+  ----------------------------------------------------- */
+
+  "Data Tugas Belajar Dibiayai":
+
+    "https://app.powerbi.com/view?r=eyJrIjoiM2U2YTU3MmItZGVlZi00MGM1LTkzMTEtMTBiMzg0OGVhOWQwIiwidCI6IjI5ZTVlYTIwLWRhYWEtNDI5MS1hMmFlLTg3NGU2M2MxZjI5MiIsImMiOjEwfQ%3D%3D&pageName=126f929e10418231ad32",
+
+
+
+  /* -----------------------------------------------------
+     DATA TUGAS BELAJAR MANDIRI
+  ----------------------------------------------------- */
+
+  "Data Tugas Belajar Mandiri":
+
+    "https://app.powerbi.com/view?r=eyJrIjoiM2U2YTU3MmItZGVlZi00MGM1LTkzMTEtMTBiMzg0OGVhOWQwIiwidCI6IjI5ZTVlYTIwLWRhYWEtNDI5MS1hMmFlLTg3NGU2M2MxZjI5MiIsImMiOjEwfQ%3D%3D&pageName=89be73248fff7fbd674e"
+
+};
+
+
+
+/* =====================================================
+   ELEMENT
+===================================================== */
+
+const frame =
+  document.getElementById("dashboardFrame");
+
+
+const title =
+  document.getElementById("dashboardTitle");
+
+
+const menuItems =
+  document.querySelectorAll(".menu-item");
+
+
+
+/* =====================================================
+   TAMPILKAN DASHBOARD
+===================================================== */
+
+function showDashboard(jenis, element) {
+
+
+  /* Ambil URL */
+
+  const url =
+    dashboardURLs[jenis];
+
+
+  /* Cek URL */
+
+  if (!url) {
+
+    console.error(
+      "Dashboard tidak ditemukan:",
+      jenis
+    );
+
+    return;
+
+  }
+
+
+  /* Masukkan URL ke iframe */
+
+  frame.src = url;
+
+
+  /* Ganti judul */
+
+  title.textContent = jenis;
+
+
+  /* Hapus menu aktif */
+
+  menuItems.forEach(function(item) {
+
+    item.classList.remove("active");
+
+  });
+
+
+  /* Aktifkan menu yang diklik */
+
+  if (element) {
+
+    element.classList.add("active");
+
+  }
+
+}
+
+
+
+/* =====================================================
+   SIDEBAR
+===================================================== */
+
+const sidebar =
+  document.getElementById("sidebar");
+
+
+const toggleBtn =
+  document.getElementById("toggleBtn");
+
+
+const trigger =
+  document.querySelector(".sidebar-trigger");
+
 
 let isClosed = false;
 
-// Klik tombol ☰
-toggleBtn.addEventListener("click", function() {
-  sidebar.classList.toggle("closed");
-  isClosed = sidebar.classList.contains("closed");
-});
 
-// Hover kiri layar
-trigger.addEventListener("mouseenter", function() {
-  if (isClosed) {
-    sidebar.classList.remove("closed");
-  }
-});
 
-// Keluar dari sidebar
-sidebar.addEventListener("mouseleave", function() {
-  if (isClosed) {
-    sidebar.classList.add("closed");
+/* =====================================================
+   TOMBOL ☰
+===================================================== */
+
+toggleBtn.addEventListener(
+  "click",
+  function() {
+
+
+    sidebar.classList.toggle(
+      "closed"
+    );
+
+
+    isClosed =
+      sidebar.classList.contains(
+        "closed"
+      );
+
+
   }
-});
+);
+
+
+
+/* =====================================================
+   MOUSE KE SISI KIRI
+===================================================== */
+
+trigger.addEventListener(
+  "mouseenter",
+  function() {
+
+
+    if (isClosed) {
+
+      sidebar.classList.remove(
+        "closed"
+      );
+
+    }
+
+
+  }
+);
+
+
+
+/* =====================================================
+   MOUSE KELUAR SIDEBAR
+===================================================== */
+
+sidebar.addEventListener(
+  "mouseleave",
+  function() {
+
+
+    if (isClosed) {
+
+      sidebar.classList.add(
+        "closed"
+      );
+
+    }
+
+
+  }
+);
+
+
+
+/* =====================================================
+   DASHBOARD DEFAULT
+===================================================== */
+
+/*
+   Saat halaman dibuka, dashboard pertama
+   langsung ditampilkan.
+*/
+
+showDashboard(
+  "Data Pendidik dan Tenaga Kependidikan",
+  document.querySelector(".menu-item")
+);
+
+
 </script>
 
+
 </body>
+
 </html>
+```
